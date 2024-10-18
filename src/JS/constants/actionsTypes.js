@@ -1,6 +1,13 @@
-
 export const CHECK_AS_DONE = "CHECK_AS_DONE";
 export const DELETE_TASK = "DELETE_TASK";
 export const EDIT_TASK = "EDIT_TASK";
 export const ADD_TASK = "ADD_TASK ";
 export const FILTER_TASKS = "FILTER_TASKS";
+export const USER_LOGIN = "USER_LOGIN";
+export const USER_REGISTER = "USER_REGISTER";
+export const USER_LOGOUT = "USER_LOGOUT";
+export const GET_USER_TASKS = "GET_USER_TASKS";
+export const FETCHING_DATA_REQUEST = "FETCHING_DATA_REQUEST";
+export const FETCHING_DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
+export const FETCHING_DATA_FAILED = "FETCHING_DATA_FAILED";
+export const CLEAN_ERRORS = "CLEAN_ERRORS";

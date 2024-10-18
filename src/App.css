@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s;
 }
 .Logo {
   position: absolute;
@@ -46,6 +47,7 @@ body {
   color: white;
   margin: 0;
   filter: drop-shadow(2px 2px 10px rgba(8, 8, 8, 0.733));
+  transition: all 0.3s;
 }
 .MainContainer {
   width: 550px;
@@ -76,7 +78,9 @@ body {
   cursor: pointer;
 }
 .AddTask input,
-.AddTask button {
+.AddTask button,
+#TokenInputText,
+.TokenInput button {
   color: #7b84ff;
   background-color: #000a40;
   border: 2px solid #7b84ff;
@@ -84,14 +88,17 @@ body {
   transition: ackground-color 0.4s;
   outline: none;
 }
-.AddTask input:hover {
+.AddTask input:hover,
+#TokenInputText:hover {
   border-color: #4a4dff;
 }
-.AddTask button:hover {
+.AddTask button:hover,
+.TokenInput button:hover {
   background-color: #000a74;
   border-color: #7b84ff;
 }
-.AddTask input:focus {
+.AddTask input:focus,
+#TokenInputText:focus {
   border-color: #7b84ff;
   box-shadow: 0 0 10px rgba(123, 132, 255, 0.5);
 }
@@ -142,7 +149,6 @@ body {
   box-sizing: border-box;
   color: white;
   background-color: rgba(0, 0, 0, 0.1);
-  
 }
 .Task:hover {
   box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45),
@@ -196,8 +202,122 @@ body {
   filter: drop-shadow(0 0 15px white);
 }
 
+.UserBtns {
+  position: fixed;
+  top: 1em;
+  right: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+}
+.UserBtn {
+  /* background: rgba(255, 255, 255, 0.2); */
+  background: radial-gradient(
+    at center,
+    rgba(255, 255, 255, 0.103) 1%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+.UserBtn:hover {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.726));
+}
+.TokenInputContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.904);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#TokenInputCloseBtn {
+  position: fixed;
+  top: 1em;
+  right: 1.5em;
+  padding: 10px;
+  cursor: pointer;
+}
+.TokenInput {
+  background-color: rgba(46, 129, 223, 0.664);
+  box-shadow: rgba(41, 41, 41, 0.25) 0px 50px 100px -20px,
+    #ffffff4d 0px 30px 60px -30px, rgba(0, 0, 0, 0.35) 0px -5px 9px 0px inset;
+  border-radius: 15px;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  width: 550px;
+}
+#TokenInputText {
+  margin: 60px 0 30px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px 10px 0 10px;
+}
+#TokenInputText::placeholder {
+  color: #7b84ff;
+}
+.TokenInputBtns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+.TokenInputBtns button {
+  color: #dddddd;
+  border-radius: 10px 0 10px 10px;
+  cursor: pointer;
+}
+.TokenInput legend {
+  color: white;
+}
+
+.TokenInput fieldset {
+  position: relative;
+}
+
+.TokenInputBtns .blockedBtn {
+  color: rgb(122, 122, 122);
+  background-color: #000a4042;
+  cursor: unset;
+}
+.TokenInputBtns .blockedBtn:hover {
+  background-color: #000a4042;
+}
+
+#UserNote {
+  color: rgb(255, 175, 175);
+  text-shadow: 0 0 5px rgb(229, 255, 0);
+  position: absolute;
+  bottom: 60%;
+}
+
+@media screen and (max-width: 950px) {
+  .App {
+    padding-top: 10vh;
+    box-sizing: border-box;
+  }
+}
+
 @media screen and (max-width: 600px) {
-  .MainContainer {
+  .Logo {
+    margin-right: 35%;
+    font-size: 8vw;
+  }
+  .MainContainer,
+  .TokenInput {
     width: 80vw;
     margin: 10px;
   }
@@ -205,35 +325,38 @@ body {
     width: 45%;
   }
   .AddTask input,
-  .AddTask button {
+  .AddTask button,
+  #TokenInputText,
+  .TokenInputBtns button {
     font-size: 15px;
   }
   .Filter {
     gap: 5%;
   }
   .ListTask {
+    height: 75%;
     margin: 0 auto 0 auto;
   }
   .edit-task {
     width: 45%;
   }
-  .Task abbr{
+  .Task abbr {
     width: 60%;
   }
   .Task abbr h5 {
-  margin: 16px;
-  white-space: wrap;
-  overflow:inherit;
-  text-overflow:unset;
-}
+    margin: 16px;
+    white-space: wrap;
+    overflow: inherit;
+    text-overflow: unset;
+  }
   .controls {
     width: 30px;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
     margin: 10px;
   }
-   .controls input {
+  .controls input {
     margin: 0;
-   }
+  }
 }
 @media screen and (max-width: 420px) {
   .MainContainer {
@@ -263,12 +386,12 @@ body {
   .Filter label {
     margin: 0 0 10px 0;
   }
-   .Task abbr{
+  .Task abbr {
     width: 70%;
   }
-    .controls {
-      margin: 10px 0;
-    }
+  .controls {
+    margin: 10px 0;
+  }
   .controls svg {
     width: 20px;
     height: 20px;
@@ -276,6 +399,8 @@ body {
   .controls input {
     width: 20px;
     transform: scale(1.5);
-    
+  }
+  .ListTask {
+    height: 65%;
   }
 }

@@ -16,7 +16,7 @@ function ListTask({ listTaskRef }) {
     <div className="ListTask">
       <div className="ListTaskWrapper" ref={listTaskRef}>
         {filtredData.length ? (
-          filtredData.map((item) => <Task key={item.id} {...item} />)
+          filtredData.map((item) => <Task key={item.taskId} {...item} />)
         ) : (
           <h6 id="noTasksMsg">
             No tasks for the moment,

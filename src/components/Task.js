@@ -1,15 +1,18 @@
 import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { checkAsDone, deleteTask, editTask } from "../JS/actions/actions";
 
-function Task({ id, description, isDone }) {
+function Task({ taskId, description, isDone }) {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const newTaskDescription = useRef(description);
+  const isLogged = useSelector((state) => state.user?._id);
 
   const handleSave = () => {
     setShow(!show);
-    dispatch(editTask({ id, desc: newTaskDescription.current }));
+    dispatch(
+      editTask({ taskId, desc: newTaskDescription.current, isDone }, isLogged)
+    );
   };
   const handeCancel = () => {
     setShow(!show);
@@ -75,7 +78,11 @@ function Task({ id, description, isDone }) {
               <input
                 type="checkbox"
                 checked={isDone}
-                onChange={() => dispatch(checkAsDone(id))}
+                onChange={() =>
+                  dispatch(
+                    checkAsDone({ taskId, description, isDone }, isLogged)
+                  )
+                }
               />
             </abbr>
             <abbr title="Edit">
@@ -98,7 +105,7 @@ function Task({ id, description, isDone }) {
               </button>
             </abbr>
             <abbr title="Remove">
-              <button onClick={() => dispatch(deleteTask(id))}>
+              <button onClick={() => dispatch(deleteTask(taskId, isLogged))}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="26"
