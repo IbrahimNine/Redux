@@ -357,6 +357,9 @@ body {
   .controls input {
     margin: 0;
   }
+  #UserNote {
+    font-size: medium;
+  }
 }
 @media screen and (max-width: 420px) {
   .MainContainer {
