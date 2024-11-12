@@ -171,6 +171,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration-thickness: 15%;
 }
 .controls {
   width: 100px;
@@ -292,6 +293,7 @@ body {
   color: rgb(122, 122, 122);
   background-color: #000a4042;
   cursor: unset;
+  pointer-events: none;
 }
 .TokenInputBtns .blockedBtn:hover {
   background-color: #000a4042;
@@ -299,14 +301,20 @@ body {
 
 #UserNote {
   color: rgb(255, 175, 175);
-  text-shadow: 0 0 5px rgb(229, 255, 0);
+  text-shadow: 0 0 1px rgba(255, 0, 0, 0.753);
   position: absolute;
   bottom: 60%;
 }
 
+.UserAuthSpin {
+  position: absolute;
+  right: 7%;
+  top: 37%;
+}
+
 @media screen and (max-width: 950px) {
   .App {
-    padding-top: 10vh;
+    padding-top: 5vh;
     box-sizing: border-box;
   }
 }
@@ -340,6 +348,9 @@ body {
   .edit-task {
     width: 45%;
   }
+  .Task:hover {
+    box-shadow: unset;
+  }
   .Task abbr {
     width: 60%;
   }
@@ -363,7 +374,7 @@ body {
 }
 @media screen and (max-width: 420px) {
   .MainContainer {
-    height: 85vh;
+    height: 75vh;
   }
   .AddTask {
     flex-direction: column;

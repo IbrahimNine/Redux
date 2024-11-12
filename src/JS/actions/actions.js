@@ -12,6 +12,7 @@ import {
   FETCHING_DATA_SUCCESS,
   FETCHING_DATA_FAILED,
   CLEAN_ERRORS,
+  END_APP_LOADING,
 } from "../constants/actionsTypes";
 import axios from "axios";
 import { onQueue } from "../utility/axiosRequests";
@@ -177,7 +178,9 @@ export const userLogin = (key, toggleTokenInput) => {
       }
     } catch (error) {
       console.log(error);
-      dispatch(fetchingDataFailed(error.data));
+      dispatch(
+        fetchingDataFailed("Server Error, Please refresh and try again")
+      );
     }
   };
 };
@@ -199,7 +202,9 @@ export const userRegister = () => {
       }
     } catch (error) {
       console.log(error);
-      dispatch(fetchingDataFailed(error.data));
+      dispatch(
+        fetchingDataFailed("Server Error, Please refresh and try again")
+      );
     }
   };
 };
@@ -239,6 +244,7 @@ export const getUserTasks = () => {
       }
     } catch (error) {
       dispatch(fetchingDataFailed(error.data));
+      dispatch({ type: END_APP_LOADING });
     }
   };
 };

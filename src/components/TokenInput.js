@@ -66,6 +66,51 @@ function TokenInput({ toggleTokenInput }) {
         <fieldset>
           <legend>Remember me:</legend>
           <p id="UserNote"></p>
+          {isLoading && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="2em"
+              height="2em"
+              viewBox="0 0 24 24"
+              color="rgba(46, 129, 223, 0.664)"
+              className="UserAuthSpin"
+            >
+              <circle cx="18" cy="12" r="0" fill="currentColor">
+                <animate
+                  attributeName="r"
+                  begin=".67"
+                  calcMode="spline"
+                  dur="1.5s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;2;0;0"
+                />
+              </circle>
+              <circle cx="12" cy="12" r="0" fill="currentColor">
+                <animate
+                  attributeName="r"
+                  begin=".33"
+                  calcMode="spline"
+                  dur="1.5s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;2;0;0"
+                />
+              </circle>
+              <circle cx="6" cy="12" r="0" fill="currentColor">
+                <animate
+                  attributeName="r"
+                  begin="0"
+                  calcMode="spline"
+                  dur="1.5s"
+                  keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                  repeatCount="indefinite"
+                  values="0;2;0;0"
+                />
+              </circle>
+            </svg>
+          )}
+
           <input
             type="text"
             name=""
@@ -79,11 +124,13 @@ function TokenInput({ toggleTokenInput }) {
             <button
               type="button"
               onClick={handleRegister}
-              className={successRegister ? "blockedBtn" : ""}
+              className={successRegister || isLoading ? "blockedBtn" : ""}
             >
-              {successRegister ? "Successful register" : "I'm new here"}
+              {successRegister && userSecretKey
+                ? "Successful register"
+                : "I'm new here"}
             </button>
-            <button type="submit">
+            <button type="submit" className={isLoading ? "blockedBtn" : ""}>
               Connect
               {/* {successRegister ? "Connected" : "Connect"} */}
             </button>

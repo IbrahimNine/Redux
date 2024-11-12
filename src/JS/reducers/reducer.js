@@ -12,6 +12,7 @@ import {
   USER_LOGOUT,
   GET_USER_TASKS,
   CLEAN_ERRORS,
+  END_APP_LOADING,
 } from "../constants/actionsTypes";
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   filterValue: "all",
   user: {},
   dataLoading: false,
+  appLoading: true,
   dataError: "",
 };
 
@@ -101,15 +103,29 @@ const tasksReducer = (state = initialState, action) => {
         dataError: "",
       };
     case GET_USER_TASKS:
-      return {
-        ...state,
-        Tasks: action.payload.tasks,
-        user: action.payload.user,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          appLoading: false,
+          Tasks: action.payload.tasks,
+          user: action.payload.user,
+        };
+      } else {
+        return {
+          ...state,
+          appLoading: false,
+        };
+      }
     case CLEAN_ERRORS:
       return {
         ...state,
         dataError: "",
+      };
+
+    case END_APP_LOADING:
+      return {
+        ...state,
+        appLoading: false,
       };
     default:
       return state;

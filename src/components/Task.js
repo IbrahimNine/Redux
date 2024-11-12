@@ -70,7 +70,9 @@ function Task({ taskId, description, isDone }) {
       ) : (
         <>
           <abbr title={description}>
-            <h5>{description}</h5>
+            <h5 style={{ textDecorationLine: isDone ? "line-through" : "" }}>
+              {description}
+            </h5>
           </abbr>
 
           <div className="controls">
