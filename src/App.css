@@ -316,6 +316,7 @@ body {
   .App {
     padding-top: 5vh;
     box-sizing: border-box;
+    max-height: 100vh;
   }
 }
 
@@ -324,9 +325,11 @@ body {
     margin-right: 35%;
     font-size: 8vw;
   }
-  .MainContainer,
+  .MainContainer,.TokenInput  {
+    width: 95vw;
+  }
   .TokenInput {
-    width: 80vw;
+    /* width: 80vw; */
     margin: 10px;
   }
   .AddTask input {
@@ -336,7 +339,8 @@ body {
   .AddTask button,
   #TokenInputText,
   .TokenInputBtns button {
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 1.1rem;
   }
   .Filter {
     gap: 5%;
@@ -363,10 +367,14 @@ body {
   .controls {
     width: 30px;
     flex-direction: column-reverse;
-    margin: 10px;
+    margin: 15px;
+    /* gap: 20px; */
   }
   .controls input {
     margin: 0;
+  }
+  .controls button:hover {
+    filter: unset;
   }
   #UserNote {
     font-size: medium;
@@ -374,7 +382,7 @@ body {
 }
 @media screen and (max-width: 420px) {
   .MainContainer {
-    height: 75vh;
+    height: 80vh;
   }
   .AddTask {
     flex-direction: column;

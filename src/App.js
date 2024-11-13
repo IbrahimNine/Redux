@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       {appLoading ? (
-        <Player src="AppLoadingAnimation.json" loop={true} autoplay={true} style={{width: "50vh"}} />
+        <Player src="AppLoadingAnimation.json" loop={true} autoplay={true} style={{width: "15rem"}} />
       ) : (
         <>
           <UserBtns toggleTokenInput={toggleTokenInput} />
